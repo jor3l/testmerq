@@ -1,4 +1,4 @@
-# First run
+# First run
 
 1. Build docker: `docker-compose build`
 2. Install api dependencies with yarn: `docker-compose run web yarn install`
