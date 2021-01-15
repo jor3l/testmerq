@@ -1,13 +1,13 @@
 import request from "supertest";
 import app from "../app";
 
-describe("Set", () => {
+describe("Timemachine", () => {
   beforeEach(async () => {
     // give each run enough time to update the events
     await new Promise((resolve) => setTimeout(resolve, 100));
   });
 
-  test("Returns a state before a SET", async () => {
+  test("Returns correct state for a passed date", async () => {
     let date = new Date();
     let res = await request(app).get("/api/state");
     const before = res.body.find((m) => m.value === 20000).amount;
