@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "3843aaec-7cc0-46eb-b00f-a80def8be6b4",
+		"name": "Test Merqueo",
+		"description": "Endpoints to consume and play with the test api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "state",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/state",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"state"
+					]
+				},
+				"description": "returns the current state of the cashier"
+			},
+			"response": []
+		},
+		{
+			"name": "transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 100000,\n    \"total\": 100000,\n    \"money\": [\n        {\n        \"value\": 50000,\n        \"amount\": 2\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"transaction"
+					]
+				},
+				"description": "Creates a new transaction that modifies the avaialable cash and returns a list of bills or coins that sum up to the expected change"
+			},
+			"response": []
+		},
+		{
+			"name": "set",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"value\": 20000,\n        \"amount\": 0\n    },\n    {\n        \"value\": 10000,\n        \"amount\": 0\n    },\n    {\n        \"value\": 5000,\n        \"amount\": 0\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/set",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"set"
+					]
+				},
+				"description": "sets a specific amount to any bill or coin, if 0 is passed, this will work as a \"clean\""
+			},
+			"response": []
+		},
+		{
+			"name": "logs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/logs?limit=30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"logs"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "30"
+						}
+					]
+				},
+				"description": "returns a paginated list of events"
+			},
+			"response": []
+		},
+		{
+			"name": "timemachine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/timemachine?date=2021-01-15T18:01:00.000Z",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"timemachine"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2021-01-15T18:01:00.000Z"
+						}
+					]
+				},
+				"description": "returns the state of the cashier at any given time"
+			},
+			"response": []
+		}
+	]
+}

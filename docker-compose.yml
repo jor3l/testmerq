@@ -1,0 +1,33 @@
+version: "3"
+services:
+  web:
+    build: .
+    command: yarn start
+    volumes:
+      - .:/usr/app/
+      - node_modules:/usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - testdb
+    links:
+      - db
+      - testdb
+    environment:
+      DATABASE_URL: postgres://user@postgres/caja
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_USER: mysql
+      MYSQL_DATABASE: mysql
+  testdb:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_USER: mysql
+      MYSQL_DATABASE: mysql
+
+volumes:
+  node_modules:
