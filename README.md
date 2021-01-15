@@ -23,6 +23,8 @@ To execute all the included tests run:
 ## Transaction
 
 `POST api/transaction`
+
+
 A transaction inserts and modifies the available cash in the app, if the total amount is lower than the money received we try to give back the best possible amount of bills and coins.
 
 ### Input
@@ -60,6 +62,7 @@ Array that indicates the money to give back and the amount of each bill or coin.
 ## Log
 
 `GET api/log`
+
 Returns a paginated list of logs for inspection in descending order
 
 ### Input
@@ -69,7 +72,8 @@ Returns a paginated list of logs for inspection in descending order
 | limit     | limit resuts per page                                |
 | offset    | offset number to move the cursor to a different page |
 
-### Output
+
+### Output
 
 Array with the count of total events for pagination and the rows for the current page. Each event specifies the type (ADD, REMOVE or SET) and the amount that was modified to the matching money_id.
 
@@ -156,6 +160,7 @@ Array with the count of total events for pagination and the rows for the current
 ## Set
 
 `POST /api/set`
+
 Set allows you to define a specific amount of bills or coins available at any given time. By passing all the bills and coins with 0 amount you essentialy clear the cashier box.
 
 ### Input
@@ -179,6 +184,7 @@ Status code 200 if the update was applied.
 ## State
 
 `GET /api/state`
+
 Returns an array with the current state of bills and coins in the cashier box
 
 ### Input
@@ -247,6 +253,7 @@ Array with the current state of the app
 ## Timemachine
 
 `GET /api/timemachine`
+
 Allows you to see the state of the cashier box at any given time. All the events before the time sent will be played back to get back a snapshot of the bills and coins
 
 ### Input
